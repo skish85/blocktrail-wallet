@@ -1,7 +1,7 @@
 angular.module('blocktrail.wallet')
     .controller('WalletCtrl', function($q, $log, $scope, $rootScope, $interval, storageService, sdkService, $translate,
                                        Wallet, Contacts, CONFIG, settingsService, $timeout, $analytics, $cordovaVibration, Currencies,
-                                       $cordovaToast, trackingService, $http, $cordovaDialogs, blocktrailLocalisation, launchService) {
+                                       $cordovaToast, trackingService, $http, $cordovaDialogs, blocktrailLocalisation, launchService, $cordovaEmailComposer) {
 
         // wait 200ms timeout to allow view to render before hiding loadingscreen
         $timeout(function() {
@@ -172,6 +172,29 @@ angular.module('blocktrail.wallet')
             });
         });
 
+        $scope.openMail = function () {
+            document.addEventListener('deviceready', function () {
+                $cordovaEmailComposer.isAvailable().then(function () {
+
+                    var messageBody = $translate.instant('INVITEMESSAGE_1') + $translate.instant('INVITEMESSAGE_2');
+
+                    var email = {
+                        to: '',
+                        subject: $translate.instant('INVITESUBJECT'),
+                        body: messageBody,
+                        isHtml: true
+                    };
+
+                    $cordovaEmailComposer.open(email).then(null, function () {
+                        console.log("Email opened for sending in external App.");
+                    });
+
+                }, function () {
+                    // Not available
+                    console.log("Email sending unavailable");
+                });
+            })
+        };
 
         $scope.$on('ORPHAN', function() {
             //show popup when an Orphan happens and wallet needs to resync
