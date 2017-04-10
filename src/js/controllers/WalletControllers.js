@@ -1,7 +1,8 @@
 angular.module('blocktrail.wallet')
     .controller('WalletCtrl', function($q, $log, $scope, $rootScope, $interval, storageService, sdkService, $translate,
                                        Wallet, Contacts, CONFIG, settingsService, $timeout, $analytics, $cordovaVibration, Currencies,
-                                       $cordovaToast, trackingService, $http, $cordovaDialogs, blocktrailLocalisation, launchService, $cordovaEmailComposer) {
+                                       $cordovaToast, trackingService, $http, $cordovaDialogs, blocktrailLocalisation, launchService,
+                                       $cordovaEmailComposer, $cordovaSocialSharing) {
 
         // wait 200ms timeout to allow view to render before hiding loadingscreen
         $timeout(function() {
@@ -194,6 +195,25 @@ angular.module('blocktrail.wallet')
                     console.log("Email sending unavailable");
                 });
             })
+        };
+
+        $scope.socialShare = function () {
+
+            var message = "Check out the BTC.com Bitcoin wallet. I highly recommend it! #bitcoin";
+            var subject = "BTC.com Wallet";
+            var file = null;
+            var link = "https://wallet.btc.com/";
+
+            $cordovaSocialSharing
+                .share(message, subject, file, link) // Share via native share sheet
+                .then(function(result) {
+                    // Success!
+                    $cordovaToast.showShortCenter($translate.instant('THANKS_2').sentenceCase());
+                    $log.debug("SocialSharing: " + result);
+                }, function(err) {
+                    // An error occured.
+                    $log.error("SocialSharing: " + err.message);
+                });
         };
 
         $scope.$on('ORPHAN', function() {
