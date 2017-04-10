@@ -477,6 +477,14 @@ module.exports = [
         "clobbers": [
             "window.plugins.tunePlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+        "id": "cordova-plugin-x-socialsharing.SocialSharing",
+        "pluginId": "cordova-plugin-x-socialsharing",
+        "clobbers": [
+            "window.plugins.socialsharing"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -513,7 +521,8 @@ module.exports.metadata =
     "cordova-plugin-google-app-conversion-tracker": "0.0.2",
     "cordova-fabric-plugin": "1.0.8",
     "cordova-plugin-google-analytics": "1.5.6",
-    "cordova-plugin-tune": "5.0.0"
+    "cordova-plugin-tune": "5.0.0",
+    "cordova-plugin-x-socialsharing": "5.1.7"
 }
 // BOTTOM OF METADATA
 });

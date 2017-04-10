@@ -147,6 +147,10 @@
                         {
                             "xml": "<feature name=\"TunePlugin\"><param name=\"android-package\" value=\"com.tune.TunePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -168,7 +172,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
@@ -214,6 +218,10 @@
                         },
                         {
                             "xml": "<receiver android:exported=\"true\" android:name=\"com.tune.TuneTracker\"><intent-filter><action android:name=\"com.android.vending.INSTALL_REFERRER\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<provider android:authorities=\"${applicationId}.sharing.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"nl.xservices.plugins.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/sharing_paths\" /></provider>",
                             "count": 1
                         }
                     ],
@@ -872,6 +880,9 @@
         },
         "cordova-plugin-tune": {
             "PACKAGE_NAME": "com.blocktrail.mywallet"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.blocktrail.mywallet"
         }
     },
     "dependent_plugins": {},
@@ -1346,6 +1357,13 @@
             "clobbers": [
                 "window.plugins.tunePlugin"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+            "id": "cordova-plugin-x-socialsharing.SocialSharing",
+            "clobbers": [
+                "window.plugins.socialsharing"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -1380,6 +1398,7 @@
         "cordova-plugin-google-app-conversion-tracker": "0.0.2",
         "cordova-fabric-plugin": "1.0.8",
         "cordova-plugin-google-analytics": "1.5.6",
-        "cordova-plugin-tune": "5.0.0"
+        "cordova-plugin-tune": "5.0.0",
+        "cordova-plugin-x-socialsharing": "5.1.7"
     }
 }

@@ -99,11 +99,13 @@
           <key>NSIncludesSubdomains</key>
           <true/>
         </dict>
+        <key>glidera.io</key>
+        <dict/>
         <key>api.blocktrail.com</key>
         <dict/>
         <key>sandbox.glidera.io</key>
         <dict/>
-        <key>glidera.io</key>
+        <key>www.glidera.io</key>
         <dict/>
       </dict>
     </dict>
