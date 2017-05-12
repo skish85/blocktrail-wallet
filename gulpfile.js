@@ -250,7 +250,9 @@ gulp.task('js:libs', ['appconfig'], function() {
             "./src/lib/angular-moment/angular-moment.js",
             "./src/lib/ngImgCrop/compile/unminified/ng-img-crop.js",
             "./src/lib/qrcode/lib/qrcode.js",
-            "./src/lib/angular-qr/src/angular-qr.js"
+            "./src/lib/angular-qr/src/angular-qr.js",
+
+            "./src/lib/fingerprintjs2/dist/fingerprint2.min.js"
         ])
             .pipe(concat('libs.js'))
             .pipe(gulpif(APPCONFIG.MINIFY, uglify()))
